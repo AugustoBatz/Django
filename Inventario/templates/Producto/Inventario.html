@@ -1,0 +1,52 @@
+{% extends 'Layout/Layout.html' %}
+{% load crispy_forms_tags %}
+{%block titulo%}
+Inventario
+{%endblock%}
+{% block content %}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Presentacion</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Unidad</th>
+            <th scope="col">En Stock</th>
+            <th scope="col">Stock Minimo</th>
+            <th scope="col">Ganancia</th>
+        </tr>
+    </thead >
+    <tbody>
+        {% if object_list %}
+        {% for cliente in object_list %}
+        <tr>
+            <th>{{ cliente.codigo }}</th>
+            <th>{{ cliente.nombre }}</th>
+            <th>{{ cliente.marca }}</th>
+            <th>{{ cliente.presentacion_1 }}</th>
+            <th>{{ cliente.catalogo }}</th>
+            <th>{{ cliente.unidadmedida_1 }}</th>
+            <th>{{ cliente.existencia }}</th>
+            <th>{{ cliente.stockminimo }}</th>
+            <th>{{ cliente.ganancia }}</th>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>Ningun Producto Existente</h1>
+        {% endif %}
+    </tbody>
+
+</table>
+<a  class="btn btn-primary" href="{% url 'Productos:CrearProducto' %}">Nuevo Producto</a>
+<script>
+$(function() {
+  $("table td:nth-child('+En Stock+'):contains(None)")
+    .parents("tr")
+    .css("background-color", "red");
+});
+</script>
+
+{%endblock%}

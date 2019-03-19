@@ -1,0 +1,5 @@
+
+            <form class="form-inline my-2 my-lg-0" method="get" action="{%url 'Almacen:search'%}" id="Bus">
+                  <input class="form-control mr-sm-2" id="BU" name="Unidad" placeholder="Buscar Unidad" type="text">
+                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+            </form>

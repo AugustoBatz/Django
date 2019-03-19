@@ -1,0 +1,128 @@
+{% extends 'Layout/Layout.html' %}
+{% load crispy_forms_tags %}
+{%block titulo%}
+Almacen
+{%endblock%}
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <form id="Unidad" method="post" >
+                <input type="hidden" name="form_id" value="Unidad">
+                {% csrf_token %}
+                {{ frm.medida|as_crispy_field }}
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Unidad</th>
+                    <th scope="col">Accion</th>
+                </tr>
+                </thead >
+                <tbody>
+                {% if unidad %}
+                {% for un in unidad %}
+                <tr>
+                    <th>{{ un.id }}</th>
+                    <th>{{ un.medida }}</th>
+                    <th>
+                        <a class="btn btn-primary" >Editar</a>
+                    </th>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h1>No existe ninguna Unidad</h1>
+                {% endif %}
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-sm">
+
+            <form id="Catalogo" method="post" >
+                <input type="hidden" name="form_id" value="Catalogo">
+                {% csrf_token %}
+                {{ frm_d.categoria|as_crispy_field }}
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Accion</th>
+                </tr>
+                </thead >
+                <tbody>
+                {% if Catalogo %}
+                {% for catalogo in Catalogo %}
+                <tr>
+                    <th>{{ catalogo.id }}</th>
+                    <th>{{ catalogo.categoria }}</th>
+                    <th>
+                        <a class="btn btn-primary" >Editar</a>
+                    </th>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h1>No existe ninguna Categoria</h1>
+                {% endif %}
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-sm">
+            <form id="Presentacion" method="post" >
+                <input type="hidden" name="form_id" value="Presentacion">
+                {% csrf_token %}
+                {{ frm_c.presentacion|as_crispy_field }}
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Presentación</th>
+                    <th scope="col">Accion</th>
+                </tr>
+                </thead >
+                <tbody>
+                {% if prese %}
+                {% for c in prese %}
+                <tr>
+                    <th>{{ c.id }}</th>
+                    <th>{{ c.presentacion }}</th>
+                    <th>
+                        <a class="btn btn-primary" >Editar</a>
+                    </th>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h1>No existe ninguna Categoria</h1>
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}

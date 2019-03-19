@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %} Clientes {% endblock titulo %} </title><link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item px-lg-4 {%if request.path == '/Clientes/verClientes/'%}active{%endif%} ">
+                <a href="{%url 'Clientes:VerClientes'%}" class="navbar-brand">Clientes</a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a href="{%url 'Proveedores:VerProveedores'%}" class="navbar-brand">Proveedores</a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a href="{%url 'Productos:Inventario' %}" class="navbar-brand">Inventario</a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a href="" class="navbar-brand">Ventas</a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a href="" class="navbar-brand">Compras</a>
+            </li>
+            <li class="nav-item px-lg-4 {%if request.path == '/Almacen/crearAlmacen/'%}active{%endif%}">
+                <a href="{%url 'Almacen:CrearAlmacen'%}" class="navbar-brand">Almacen</a>
+            </li>
+            {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'login' %}">{{user}}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="">{{user}}</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Salir</a>
+                </li>
+            {%endif%}
+
+
+    </ul>
+  </div>
+</nav>
+
+
+
+    <div class="container">
+
+    {% block content %}
+
+    {% endblock %}
+
+    </div>
+
+
+</body>
+ <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</html>

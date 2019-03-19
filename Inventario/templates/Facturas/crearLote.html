@@ -1,0 +1,15 @@
+{% extends 'Layout/Layout.html' %}
+{% load crispy_forms_tags %}
+{%block titulo%}
+Crear Cliente
+{%endblock%}
+{% block content %}
+<form method="post">
+
+    {%csrf_token%}
+    {{form.as_p}}
+    {{form2.as_p}}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{%endblock%}

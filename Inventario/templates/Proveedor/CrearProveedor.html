@@ -1,0 +1,38 @@
+{% extends 'Layout/Layout.html' %}
+{% load crispy_forms_tags %}
+{%block titulo%}
+Crear Cliente
+{%endblock%}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm">
+            {{ form.nombrev|as_crispy_field}}
+        </div>
+        <div class="col-sm">
+            {{ form.representante|as_crispy_field}}
+        </div>
+        <div class="col-sm">
+
+            {{ form.nit|as_crispy_field}}
+        </div>
+         <div class="col-sm">
+            {{ form.numero|as_crispy_field}}
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            {{ form.direccion|as_crispy_field}}
+        </div>
+        <div class="col-sm">
+            {{ form.correo|as_crispy_field}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+</form>
+{%endblock%}

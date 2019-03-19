@@ -1,0 +1,39 @@
+{% extends 'Layout/Layout.html' %}
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nit</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Télefono</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead >
+    <tbody>
+        {% if Clientes %}
+        {% for cliente in Clientes %}
+        <tr>
+            <th>{{ cliente.id }}</th>
+            <th>{{ cliente.nombrec }}</th>
+            <th>{{ cliente.apellido }}</th>
+            <th>{{ cliente.nit }}</th>
+            <th>{{ cliente.direccion }}</th>
+            <th>{{ cliente.correo }}</th>
+            <th>{{ cliente.numero }}</th>
+            <th>
+                <a class="btn btn-primary" href="{% url 'EditarCliente' cliente.id %}">Editar</a>
+            </th>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No existe ningun Cliente</h1>
+        {% endif %}
+    </tbody>
+
+</table>
+
+{% endblock %}

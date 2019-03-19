@@ -1,0 +1,44 @@
+{% extends 'Layout/Layout2.html' %}
+{%block title %}
+Inventario
+{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container login-container">
+                <div class="row">
+                    <div class="col-md-6 login-form-1">
+                        <h3>Iniciar Sesión</h3>
+
+                            <div class="form-group">
+                                <label for="username">Nombre de Usuario:</label>
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Contraseña:</label>
+                                 <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Ingresar">
+                            </div>
+                            <div class="form-group">
+                                <a href="{%url 'password_reset' %}">Olvide mi contraseña</a>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+{% endblock %}
